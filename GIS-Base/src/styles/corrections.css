@@ -1,0 +1,160 @@
+/* UI/UX audit corrections: hierarchy, touch safety, and compact responsive records. */
+.section-kicker {
+  display: block;
+  line-height: 1.6;
+}
+.section-kicker + h2 {
+  margin-block-start: 8px !important;
+}
+
+.dependencies-page .danger-action {
+  inline-size: 44px;
+  block-size: 44px;
+}
+.field-resource-list label {
+  min-block-size: 44px;
+}
+.maplibregl-marker.asset-location-marker {
+  inline-size: 44px;
+  block-size: 44px;
+  background: radial-gradient(circle, rgba(84,232,184,.16) 0 32%, transparent 34%);
+  box-shadow: none;
+}
+.maplibregl-marker.asset-location-marker.grouped-marker {
+  background: radial-gradient(circle, #6a531d 0 42%, transparent 44%);
+}
+
+@media (max-width: 620px) {
+  .table-scroll:has(.responsive-record-table) {
+    overflow: visible;
+    border: 0;
+  }
+  .responsive-record-table {
+    min-inline-size: 0;
+    border-collapse: separate;
+  }
+  .responsive-record-table thead {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .responsive-record-table tbody {
+    display: grid;
+    gap: 12px;
+  }
+  .responsive-record-table tbody tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+  }
+  .responsive-record-table tbody td {
+    min-inline-size: 0;
+    display: grid;
+    align-content: start;
+    gap: 5px;
+    padding: 11px 12px !important;
+    text-align: right !important;
+    border-block-end: 1px solid var(--line);
+  }
+  .responsive-record-table tbody td:nth-child(odd) {
+    border-inline-start: 1px solid var(--line);
+  }
+  .responsive-record-table tbody td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 10.5px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+  .responsive-record-table tbody td:nth-child(2),
+  .responsive-record-table tbody td:last-child {
+    grid-column: 1 / -1;
+  }
+  .responsive-record-table tbody td:last-child {
+    border-block-end: 0;
+  }
+  .responsive-record-table .asset-name-cell,
+  .responsive-record-table .row-actions {
+    justify-content: flex-start;
+  }
+
+  .notification-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .notification-metrics article:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .notification-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Navigation remains comfortably operable with touch and keyboard at every breakpoint. */
+.skip-link,
+.sidebar-close,
+.sidebar-collapse,
+.nav-group-toggle,
+.sidebar nav a {
+  min-block-size: 44px;
+}
+.sidebar-close {
+  min-inline-size: 44px;
+  inline-size: 44px;
+}
+
+/* Form controls use their border as the only focus and validation indicator. */
+body :where(
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+  select,
+  textarea
+) {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+body :where(
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+  select,
+  textarea
+):focus-visible {
+  outline: 0 !important;
+  border-color: var(--green) !important;
+  box-shadow: none !important;
+}
+body :where(input, select, textarea)[aria-invalid="true"] {
+  outline: 0 !important;
+  border-color: var(--danger) !important;
+  box-shadow: none !important;
+}
+body select { color-scheme: dark; }
+body :where(select option, select optgroup) {
+  color: var(--text);
+  background: #0b2022;
+}
+
+/* Unified form controls: solid, readable, and consistent across operational pages. */
+.app-shell :where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]), select, textarea) {
+  min-height: 46px;
+  border: 1px solid #315254;
+  border-radius: 12px;
+  background: #0d282a;
+  color: var(--text);
+  padding: .68rem .85rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+  transition: border-color .16s ease, background-color .16s ease, box-shadow .16s ease;
+}
+.app-shell :where(input, select, textarea):hover { border-color: #477174; background: #103033; }
+.app-shell :where(input, select, textarea):focus-visible { border-color: var(--green) !important; background: #123437; box-shadow: 0 0 0 3px rgba(79,213,186,.16) !important; outline: 0; }
+.app-shell :where(label) { color: #b4c9c4; font-weight: 600; }
+.app-shell input[type=file] { min-height: 46px; padding: .5rem; border: 1px dashed #477174; border-radius: 12px; background: #0d282a; color: var(--muted); cursor: pointer; }
+.app-shell input[type=file]::file-selector-button { margin-inline-end: .7rem; border: 0; border-radius: 8px; background: #174a49; color: var(--green); padding: .45rem .7rem; font: inherit; font-weight: 700; cursor: pointer; }
+.ai-controls label, .layer-import-controls label, .processing-launch label, .data-toolbar label, .report-controls label { padding: .7rem; border: 1px solid #315254; border-radius: 14px; background: #0b2426; }
+.ai-controls label select { min-height: 40px; padding: .45rem .1rem; background: #0d282a; border: 1px solid #315254; border-radius: 9px; }
+@media (max-width: 640px) { .app-shell :where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]), select, textarea) { min-height: 48px; font-size: 16px; } }

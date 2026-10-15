@@ -1,0 +1,74 @@
+﻿[
+    {
+        "Layer":  "mgos:Military_Bases",
+        "Enabled":  true,
+        "SRS":  "EPSG:32637",
+        "Style":  "mgos:mgos_points",
+        "Count":  4,
+        "Pass":  true
+    },
+    {
+        "Layer":  "mgos:Checkpoints",
+        "Enabled":  true,
+        "SRS":  "EPSG:32637",
+        "Style":  "mgos:mgos_points",
+        "Count":  4,
+        "Pass":  true
+    },
+    {
+        "Layer":  "mgos:Operation_Sectors",
+        "Enabled":  true,
+        "SRS":  "EPSG:32637",
+        "Style":  "mgos:mgos_polygons",
+        "Count":  4,
+        "Pass":  true
+    },
+    {
+        "Layer":  "mgos:Patrol_Routes",
+        "Enabled":  true,
+        "SRS":  "EPSG:32637",
+        "Style":  "mgos:mgos_lines",
+        "Count":  4,
+        "Pass":  true
+    },
+    {
+        "Layer":  "mgos:Threat_Areas",
+        "Enabled":  true,
+        "SRS":  "EPSG:32637",
+        "Style":  "mgos:mgos_polygons",
+        "Count":  4,
+        "Pass":  true
+    },
+    {
+        "Layer":  "mgos:Supply_Routes",
+        "Enabled":  true,
+        "SRS":  "EPSG:32637",
+        "Style":  "mgos:mgos_lines",
+        "Count":  4,
+        "Pass":  true
+    },
+    {
+        "Layer":  "mgos:Military_Warehouses",
+        "Enabled":  true,
+        "SRS":  "EPSG:32637",
+        "Style":  "mgos:mgos_points",
+        "Count":  4,
+        "Pass":  true
+    },
+    {
+        "Layer":  "mgos:Airports",
+        "Enabled":  true,
+        "SRS":  "EPSG:32637",
+        "Style":  "mgos:mgos_points",
+        "Count":  4,
+        "Pass":  true
+    },
+    {
+        "Layer":  "mgos:Communication_Towers",
+        "Enabled":  true,
+        "SRS":  "EPSG:32637",
+        "Style":  "mgos:mgos_points",
+        "Count":  4,
+        "Pass":  true
+    }
+]

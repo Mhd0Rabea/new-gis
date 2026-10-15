@@ -1,0 +1,41 @@
+{
+  "schema": "mgos",
+  "srid": 32637,
+  "report": "docs/evidence/002-postgis-integration/import-report.json",
+  "migrationGroups": {
+    "core": [
+      "database/migrations/001-core-schema.sql",
+      "database/migrations/003-promote-staging.sql"
+    ],
+    "all": [
+      "database/migrations/001-core-schema.sql",
+      "database/migrations/002-full-schema.sql",
+      "database/migrations/003-promote-staging.sql"
+    ]
+  },
+  "deferredConstraints": [
+    { "table": "military_personnel", "name": "military_personnel_warehouse_fk" },
+    { "table": "military_incidents", "name": "military_incidents_threat_fk" }
+  ],
+  "datasets": [
+    { "canonicalName": "Military_Bases", "source": "Base_Data/Military_Bases", "kind": "feature", "group": "core", "businessId": "Base_ID", "requiredText": "Base_Name" },
+    { "canonicalName": "Checkpoints", "source": "Base_Data/Checkpoints", "kind": "feature", "group": "core", "businessId": "Checkpoint_ID", "requiredText": "Name" },
+    { "canonicalName": "Operation_Sectors", "source": "Operations/Operation_Sectors", "kind": "feature", "group": "core", "businessId": "Sector_ID", "requiredText": "Name" },
+    { "canonicalName": "Patrol_Routes", "source": "Operations/Patrol_Routes", "kind": "feature", "group": "core", "businessId": "Route_ID", "requiredText": "Name" },
+    { "canonicalName": "Threat_Areas", "source": "Intelligence/Threat_Areas", "kind": "feature", "group": "extended", "businessId": "Threat_ID", "requiredText": "Name" },
+    { "canonicalName": "Supply_Routes", "source": "Logistics/Supply_Routes", "kind": "feature", "group": "extended", "businessId": "Route_ID", "requiredText": "Name" },
+    { "canonicalName": "Military_Warehouses", "source": "Logistics/Military_Warehouses", "kind": "feature", "group": "extended", "businessId": "Warehouse_ID", "requiredText": "Name" },
+    { "canonicalName": "Airports", "source": "Infrastructure/Airports", "kind": "feature", "group": "extended", "businessId": "Airport_ID", "requiredText": "Name" },
+    { "canonicalName": "Communication_Towers", "source": "Infrastructure/Communication_Towers", "kind": "feature", "group": "extended", "businessId": "Tower_ID", "requiredText": "Name" },
+    { "canonicalName": "Military_Personnel", "source": "Military_Personnel", "kind": "table", "group": "core", "businessId": "Personnel_ID", "requiredText": "Full_Name" },
+    { "canonicalName": "Military_Vehicles", "source": "Military_Vehicles", "kind": "table", "group": "core", "businessId": "Vehicle_ID", "requiredText": "Vehicle_Name" },
+    { "canonicalName": "Weapons_Inventory", "source": "Weapons_Inventory", "kind": "table", "group": "extended", "businessId": "Weapon_ID", "requiredText": "Weapon_Name" },
+    { "canonicalName": "Intelligence_Reports", "source": "Intelligence_Reports", "kind": "table", "group": "extended", "businessId": "Report_ID", "requiredText": "Title" },
+    { "canonicalName": "Military_Incidents", "source": "Military_Incidents", "kind": "table", "group": "core", "businessId": "Incident_ID", "requiredText": "Name" },
+    { "canonicalName": "Communication_Devices", "source": "Communication_Devices", "kind": "table", "group": "extended", "businessId": "Device_ID" },
+    { "canonicalName": "Maintenance_Records", "source": "Maintenance_Records", "kind": "table", "group": "extended", "businessId": "Maintenance_ID" },
+    { "canonicalName": "System_Users", "source": "System_Users", "kind": "table", "group": "extended", "businessId": "User_ID", "requiredText": "Username" },
+    { "canonicalName": "Audit_Log", "source": "Audit_Log", "kind": "table", "group": "extended", "businessId": "Log_ID" },
+    { "canonicalName": "Attachments_Metadata", "source": "Attachments_Metadata", "kind": "table", "group": "extended", "businessId": "Attachment_ID", "requiredText": "File_Name" }
+  ]
+}

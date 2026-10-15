@@ -1,0 +1,12 @@
+﻿export const AI_CLASSES=['ground','building','vegetation','vehicle','unknown'] as const;
+export type AiClass=(typeof AI_CLASSES)[number];
+export type ReviewDecisionType='accept'|'correct'|'reject';
+export type ReviewStatus='unreviewed'|'accepted'|'corrected'|'rejected';
+export type FeatureVector={relativeHeight:number;localDensity:number;verticalSpread:number;intensity:number;red:number;green:number;blue:number};
+export type ModelVersion={id:string;name:string;version:string;algorithm:'nearest-centroid';classes:Exclude<AiClass,'unknown'>[];featureSchema:(keyof FeatureVector)[];normalization:{means:number[];standardDeviations:number[]};centroids:Record<Exclude<AiClass,'unknown'>,number[]>;confidenceThreshold:number;trainingDatasetId:string;createdAt:string;status:'candidate'|'approved'|'retired';warning:string;metrics?:EvaluationMetrics};
+export type ClassificationPrediction={predictedClass:AiClass;confidence:number;distances:Record<string,number>};
+export type ClassifiedFeature={sourcePointId:string;coordinates:[number,number,number];predictedClass:AiClass;confidence:number;reviewStatus:ReviewStatus;reviewedClass?:AiClass;modelVersion:string;truthClass?:Exclude<AiClass,'unknown'>};
+export type PerClassMetric={precision:number;recall:number;f1:number;support:number};
+export type EvaluationMetrics={confusionMatrix:Record<string,Record<string,number>>;perClass:Record<string,PerClassMetric>;macroF1:number;accuracy:number;abstentionRate:number;passed:boolean};
+export type AiClassificationResult={id:string;jobId:string;modelVersionId:string;sourceFile:string;artifactFile:string;status:'temporary'|'in_review'|'approved'|'rejected';confidenceThreshold:number;classCounts:Record<string,number>;lowConfidenceCount:number;warning:string;metrics?:EvaluationMetrics;baselineMetrics?:EvaluationMetrics;createdAt:string;reviewedAt?:string};
+export type ReviewDecision={id:string;resultId:string;featureId?:string;decision:ReviewDecisionType;originalClass?:AiClass;reviewedClass?:AiClass;reason?:string;reviewer:string;createdAt:string};

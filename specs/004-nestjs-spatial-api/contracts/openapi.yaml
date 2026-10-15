@@ -1,0 +1,263 @@
+openapi: 3.1.0
+info:
+  title: MGOS Spatial API
+  version: 0.1.0
+  description: Local learning API for approved MGOS spatial layers.
+servers:
+  - url: /api
+    description: Relative URL; host and port come from the deployment environment
+paths:
+  /features/{layer}:
+    get:
+      summary: List features from an allowed layer
+      parameters:
+        - $ref: '#/components/parameters/Layer'
+        - name: bbox
+          in: query
+          schema: { type: string, pattern: '^-?\d+(\.\d+)?,-?\d+(\.\d+)?,-?\d+(\.\d+)?,-?\d+(\.\d+)?$' }
+        - name: limit
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 500, default: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, minimum: 0, default: 0 }
+        - name: filter
+          in: query
+          description: Comma-separated allowlisted field:value pairs
+          schema: { type: string }
+      responses:
+        '200':
+          description: GeoJSON FeatureCollection in EPSG:4326
+          content:
+            application/geo+json:
+              schema: { $ref: '#/components/schemas/FeatureCollection' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    post:
+      summary: Create a feature in an editable layer
+      parameters:
+        - $ref: '#/components/parameters/Layer'
+      requestBody:
+        required: true
+        content:
+          application/geo+json:
+            schema: { $ref: '#/components/schemas/FeatureInput' }
+      responses:
+        '201':
+          description: Created feature
+          content:
+            application/geo+json:
+              schema: { $ref: '#/components/schemas/Feature' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /features/{layer}/import:
+    post:
+      summary: Import user-uploaded GeoJSON into an editable layer
+      parameters:
+        - $ref: '#/components/parameters/Layer'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file: { type: string, format: binary }
+      responses:
+        '201': { description: Import summary }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /features/tables/{table}:
+    get:
+      summary: List records from an allowed non-spatial table
+      parameters:
+        - name: table
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Allowed table records
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object, additionalProperties: true }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /features/{layer}/{id}:
+    get:
+      summary: Get one feature
+      parameters:
+        - $ref: '#/components/parameters/Layer'
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: GeoJSON Feature in EPSG:4326
+          content:
+            application/geo+json:
+              schema: { $ref: '#/components/schemas/Feature' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    patch:
+      summary: Partially update a feature
+      parameters:
+        - $ref: '#/components/parameters/Layer'
+        - $ref: '#/components/parameters/Id'
+      requestBody:
+        required: true
+        content:
+          application/geo+json:
+            schema: { $ref: '#/components/schemas/FeaturePatch' }
+      responses:
+        '200':
+          description: Updated feature
+          content:
+            application/geo+json:
+              schema: { $ref: '#/components/schemas/Feature' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409': { $ref: '#/components/responses/Conflict' }
+    delete:
+      summary: Delete a feature
+      parameters:
+        - $ref: '#/components/parameters/Layer'
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204': { description: Deleted }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /features/{layer}/{id}/related/{table}:
+    get:
+      summary: List allowed related records
+      parameters:
+        - $ref: '#/components/parameters/Layer'
+        - $ref: '#/components/parameters/Id'
+        - name: table
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [Military_Personnel, Military_Vehicles, Weapons_Inventory, Intelligence_Reports, Communication_Devices, Military_Incidents]
+      responses:
+        '200':
+          description: Related records
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { type: object, additionalProperties: true }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '404': { $ref: '#/components/responses/NotFound' }
+components:
+  parameters:
+    Layer:
+      name: layer
+      in: path
+      required: true
+      schema:
+        type: string
+        enum: [Military_Bases, Checkpoints, Operation_Sectors, Patrol_Routes, Threat_Areas, Supply_Routes, Military_Warehouses, Airports, Communication_Towers]
+    Id:
+      name: id
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+  schemas:
+    Geometry:
+      oneOf:
+        - type: object
+          required: [type, coordinates]
+          properties:
+            type: { const: Point }
+            coordinates: { type: array, minItems: 2, maxItems: 2, items: { type: number } }
+        - type: object
+          required: [type, coordinates]
+          properties:
+            type: { const: LineString }
+            coordinates:
+              type: array
+              minItems: 2
+              items: { type: array, minItems: 2, maxItems: 2, items: { type: number } }
+        - type: object
+          required: [type, coordinates]
+          properties:
+            type: { const: Polygon }
+            coordinates: { type: array }
+        - type: object
+          required: [type, coordinates]
+          properties:
+            type: { const: MultiLineString }
+            coordinates: { type: array }
+        - type: object
+          required: [type, coordinates]
+          properties:
+            type: { const: MultiPolygon }
+            coordinates: { type: array }
+    FeatureInput:
+      type: object
+      required: [type, geometry, properties]
+      properties:
+        type: { const: Feature }
+        geometry: { $ref: '#/components/schemas/Geometry' }
+        properties: { type: object, additionalProperties: true }
+    FeaturePatch:
+      type: object
+      minProperties: 1
+      properties:
+        type: { const: Feature }
+        geometry: { $ref: '#/components/schemas/Geometry' }
+        properties: { type: object, additionalProperties: true }
+      anyOf:
+        - required: [geometry]
+        - required: [properties]
+    Feature:
+      allOf:
+        - $ref: '#/components/schemas/FeatureInput'
+        - type: object
+          required: [id]
+          properties:
+            id: { type: string, format: uuid }
+    FeatureCollection:
+      type: object
+      required: [type, features, metadata]
+      properties:
+        type: { const: FeatureCollection }
+        features:
+          type: array
+          items: { $ref: '#/components/schemas/Feature' }
+        metadata:
+          type: object
+          required: [limit, offset, returned]
+          properties:
+            limit: { type: integer }
+            offset: { type: integer }
+            returned: { type: integer }
+            total: { type: integer }
+    ApiError:
+      type: object
+      required: [statusCode, code, message]
+      properties:
+        statusCode: { type: integer }
+        code: { type: string }
+        message: { type: string }
+        details: { type: array, items: { type: object } }
+  responses:
+    BadRequest:
+      description: Invalid layer, identifier, filter, fields, or geometry
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ApiError' }
+    NotFound:
+      description: Layer, feature, or allowed relation not found
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ApiError' }
+    Conflict:
+      description: Referential or concurrent modification conflict
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ApiError' }

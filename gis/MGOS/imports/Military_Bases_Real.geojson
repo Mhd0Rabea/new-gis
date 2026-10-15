@@ -1,0 +1,384 @@
+{
+    "type":  "FeatureCollection",
+    "name":  "Military_Bases",
+    "bbox":  [
+                 36.0812536,
+                 33.2804753,
+                 36.3657549,
+                 33.5955427
+             ],
+    "features":  [
+                     {
+                         "type":  "Feature",
+                         "properties":  {
+                                            "base_name":  "ك. الاستطلاع",
+                                            "base_type":  5,
+                                            "security_level":  3,
+                                            "status":  1,
+                                            "soldiers_count":  100,
+                                            "vehicles_count":  10,
+                                            "commander":  null,
+                                            "call_sign":  null,
+                                            "area_size":  null,
+                                            "elevation":  null,
+                                            "power_source":  null,
+                                            "communication_status":  null,
+                                            "notes":  null
+                                        },
+                         "bbox":  [
+                                      36.155331,
+                                      33.3012351,
+                                      36.155331,
+                                      33.3012351
+                                  ],
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              36.155331,
+                                                              33.3012351
+                                                          ]
+                                      }
+                     },
+                     {
+                         "type":  "Feature",
+                         "properties":  {
+                                            "base_name":  "ك. الاشار ة",
+                                            "base_type":  5,
+                                            "security_level":  null,
+                                            "status":  null,
+                                            "soldiers_count":  null,
+                                            "vehicles_count":  null,
+                                            "commander":  null,
+                                            "call_sign":  null,
+                                            "area_size":  null,
+                                            "elevation":  null,
+                                            "power_source":  null,
+                                            "communication_status":  null,
+                                            "notes":  null
+                                        },
+                         "bbox":  [
+                                      36.1486281,
+                                      33.2976394,
+                                      36.1486281,
+                                      33.2976394
+                                  ],
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              36.1486281,
+                                                              33.2976394
+                                                          ]
+                                      }
+                     },
+                     {
+                         "type":  "Feature",
+                         "properties":  {
+                                            "base_name":  "مركز ف. السابعة",
+                                            "base_type":  4,
+                                            "security_level":  null,
+                                            "status":  null,
+                                            "soldiers_count":  null,
+                                            "vehicles_count":  null,
+                                            "commander":  null,
+                                            "call_sign":  null,
+                                            "area_size":  null,
+                                            "elevation":  null,
+                                            "power_source":  null,
+                                            "communication_status":  null,
+                                            "notes":  null
+                                        },
+                         "bbox":  [
+                                      36.1701959,
+                                      33.2910913,
+                                      36.1701959,
+                                      33.2910913
+                                  ],
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              36.1701959,
+                                                              33.2910913
+                                                          ]
+                                      }
+                     },
+                     {
+                         "type":  "Feature",
+                         "properties":  {
+                                            "base_name":  "تلة الكابوسية",
+                                            "base_type":  4,
+                                            "security_level":  null,
+                                            "status":  null,
+                                            "soldiers_count":  null,
+                                            "vehicles_count":  null,
+                                            "commander":  null,
+                                            "call_sign":  null,
+                                            "area_size":  null,
+                                            "elevation":  null,
+                                            "power_source":  null,
+                                            "communication_status":  null,
+                                            "notes":  null
+                                        },
+                         "bbox":  [
+                                      36.1075138,
+                                      33.3995969,
+                                      36.1075138,
+                                      33.3995969
+                                  ],
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              36.1075138,
+                                                              33.3995969
+                                                          ]
+                                      }
+                     },
+                     {
+                         "type":  "Feature",
+                         "properties":  {
+                                            "base_name":  "حقل الرماية",
+                                            "base_type":  5,
+                                            "security_level":  null,
+                                            "status":  null,
+                                            "soldiers_count":  null,
+                                            "vehicles_count":  null,
+                                            "commander":  null,
+                                            "call_sign":  null,
+                                            "area_size":  null,
+                                            "elevation":  null,
+                                            "power_source":  null,
+                                            "communication_status":  null,
+                                            "notes":  null
+                                        },
+                         "bbox":  [
+                                      36.2103451,
+                                      33.3833878,
+                                      36.2103451,
+                                      33.3833878
+                                  ],
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              36.2103451,
+                                                              33.3833878
+                                                          ]
+                                      }
+                     },
+                     {
+                         "type":  "Feature",
+                         "properties":  {
+                                            "base_name":  "مركز المدفعية",
+                                            "base_type":  5,
+                                            "security_level":  null,
+                                            "status":  null,
+                                            "soldiers_count":  null,
+                                            "vehicles_count":  null,
+                                            "commander":  null,
+                                            "call_sign":  null,
+                                            "area_size":  null,
+                                            "elevation":  null,
+                                            "power_source":  null,
+                                            "communication_status":  null,
+                                            "notes":  null
+                                        },
+                         "bbox":  [
+                                      36.146386,
+                                      33.5955427,
+                                      36.146386,
+                                      33.5955427
+                                  ],
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              36.146386,
+                                                              33.5955427
+                                                          ]
+                                      }
+                     },
+                     {
+                         "type":  "Feature",
+                         "properties":  {
+                                            "base_name":  "تلة المعضمية",
+                                            "base_type":  2,
+                                            "security_level":  null,
+                                            "status":  null,
+                                            "soldiers_count":  null,
+                                            "vehicles_count":  null,
+                                            "commander":  null,
+                                            "call_sign":  null,
+                                            "area_size":  null,
+                                            "elevation":  null,
+                                            "power_source":  null,
+                                            "communication_status":  null,
+                                            "notes":  null
+                                        },
+                         "bbox":  [
+                                      36.181038,
+                                      33.4707017,
+                                      36.181038,
+                                      33.4707017
+                                  ],
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              36.181038,
+                                                              33.4707017
+                                                          ]
+                                      }
+                     },
+                     {
+                         "type":  "Feature",
+                         "properties":  {
+                                            "base_name":  "ل 75",
+                                            "base_type":  2,
+                                            "security_level":  null,
+                                            "status":  null,
+                                            "soldiers_count":  null,
+                                            "vehicles_count":  null,
+                                            "commander":  null,
+                                            "call_sign":  null,
+                                            "area_size":  null,
+                                            "elevation":  null,
+                                            "power_source":  null,
+                                            "communication_status":  null,
+                                            "notes":  null
+                                        },
+                         "bbox":  [
+                                      36.202921,
+                                      33.3663935,
+                                      36.202921,
+                                      33.3663935
+                                  ],
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              36.202921,
+                                                              33.3663935
+                                                          ]
+                                      }
+                     },
+                     {
+                         "type":  "Feature",
+                         "properties":  {
+                                            "base_name":  "إدارة الجوي",
+                                            "base_type":  4,
+                                            "security_level":  null,
+                                            "status":  null,
+                                            "soldiers_count":  null,
+                                            "vehicles_count":  null,
+                                            "commander":  null,
+                                            "call_sign":  null,
+                                            "area_size":  null,
+                                            "elevation":  null,
+                                            "power_source":  null,
+                                            "communication_status":  null,
+                                            "notes":  null
+                                        },
+                         "bbox":  [
+                                      36.3657549,
+                                      33.5044993,
+                                      36.3657549,
+                                      33.5044993
+                                  ],
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              36.3657549,
+                                                              33.5044993
+                                                          ]
+                                      }
+                     },
+                     {
+                         "type":  "Feature",
+                         "properties":  {
+                                            "base_name":  "تل المانع",
+                                            "base_type":  2,
+                                            "security_level":  null,
+                                            "status":  null,
+                                            "soldiers_count":  null,
+                                            "vehicles_count":  null,
+                                            "commander":  null,
+                                            "call_sign":  null,
+                                            "area_size":  null,
+                                            "elevation":  null,
+                                            "power_source":  null,
+                                            "communication_status":  null,
+                                            "notes":  null
+                                        },
+                         "bbox":  [
+                                      36.2945601,
+                                      33.3402894,
+                                      36.2945601,
+                                      33.3402894
+                                  ],
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              36.2945601,
+                                                              33.3402894
+                                                          ]
+                                      }
+                     },
+                     {
+                         "type":  "Feature",
+                         "properties":  {
+                                            "base_name":  "تجمع كناكر",
+                                            "base_type":  4,
+                                            "security_level":  null,
+                                            "status":  null,
+                                            "soldiers_count":  null,
+                                            "vehicles_count":  null,
+                                            "commander":  null,
+                                            "call_sign":  null,
+                                            "area_size":  null,
+                                            "elevation":  null,
+                                            "power_source":  null,
+                                            "communication_status":  null,
+                                            "notes":  null
+                                        },
+                         "bbox":  [
+                                      36.0812536,
+                                      33.2804753,
+                                      36.0812536,
+                                      33.2804753
+                                  ],
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              36.0812536,
+                                                              33.2804753
+                                                          ]
+                                      }
+                     },
+                     {
+                         "type":  "Feature",
+                         "properties":  {
+                                            "base_name":  "مركزية الأولى",
+                                            "base_type":  4,
+                                            "security_level":  null,
+                                            "status":  null,
+                                            "soldiers_count":  null,
+                                            "vehicles_count":  null,
+                                            "commander":  null,
+                                            "call_sign":  null,
+                                            "area_size":  null,
+                                            "elevation":  null,
+                                            "power_source":  null,
+                                            "communication_status":  null,
+                                            "notes":  null
+                                        },
+                         "bbox":  [
+                                      36.2482191,
+                                      33.3831779,
+                                      36.2482191,
+                                      33.3831779
+                                  ],
+                         "geometry":  {
+                                          "type":  "Point",
+                                          "coordinates":  [
+                                                              36.2482191,
+                                                              33.3831779
+                                                          ]
+                                      }
+                     }
+                 ]
+}

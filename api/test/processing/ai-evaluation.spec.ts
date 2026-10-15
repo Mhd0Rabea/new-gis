@@ -1,0 +1,2 @@
+﻿import { evaluatePredictions } from '../../src/processing/ai/evaluation';
+describe('AI evaluation',()=>{it('computes a perfect matrix',()=>{const truth=['ground','building','vegetation','vehicle'] as const;const result=evaluatePredictions([...truth],[...truth]);expect(result.accuracy).toBe(1);expect(result.macroF1).toBe(1);expect(result.passed).toBe(true)});it('tracks abstentions',()=>{const result=evaluatePredictions(['ground','building'],['unknown','building']);expect(result.abstentionRate).toBe(.5);expect(result.confusionMatrix.ground.unknown).toBe(1)});});

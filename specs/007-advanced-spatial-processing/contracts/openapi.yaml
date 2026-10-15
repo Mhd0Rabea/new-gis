@@ -1,0 +1,15 @@
+﻿openapi: 3.1.0
+info: { title: MGOS Processing API, version: 0.2.0 }
+paths:
+ /processing/jobs:
+  get: { summary: List processing jobs, responses: { '200': { description: Job list } } }
+  post:
+   summary: Start an allowlisted processing job
+   responses: { '201': { description: Job accepted }, '400': { description: Invalid input } }
+ /processing/jobs/{id}:
+  get: { summary: Get job, responses: { '200': { description: Job } } }
+  delete: { summary: Remove a finished job and its artifact, responses: { '200': { description: Deleted }, '409': { description: Active job } } }
+ /processing/jobs/{id}/cancel:
+  post: { summary: Cancel job, responses: { '200': { description: Cancelled } } }
+ /processing/jobs/{id}/output:
+  get: { summary: Download a completed artifact, responses: { '200': { description: Artifact stream }, '404': { description: No artifact } } }

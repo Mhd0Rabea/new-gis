@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "Qomra Arabic";
+  src: url("../../fonts/itfQomraArabic-Light.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: "Qomra Arabic";
+  src: url("../../fonts/itfQomraArabic-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: "Qomra Arabic";
+  src: url("../../fonts/itfQomraArabic-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+
+:root {
+  font-family: "Qomra Arabic", "Segoe UI", Tahoma, Arial, sans-serif;
+  color-scheme: dark;
+  --bg: #050b0d;
+  --canvas: #071113;
+  --surface: #0a1719;
+  --surface-2: #102326;
+  --surface-raised: #132a2d;
+  --panel: #0a1719;
+  --line: rgba(196, 205, 203, .10);
+  --line-strong: rgba(196, 205, 203, .18);
+  --text: #f1f6f4;
+  --muted: #9aada8;
+  --subtle: #70857f;
+  --green: #4fe0bd;
+  --green-dark: #123d35;
+  --gold: #e2b85e;
+  --danger: #ff807a;
+  --info: #7fc8f4;
+  --focus: var(--green);
+  --focus-ring: rgba(79, 224, 189, .58);
+  --sidebar-width: 292px;
+  --panel-radius: 10px;
+  --panel-radius-large: 12px;
+  --shadow-panel: 0 18px 50px rgba(0, 0, 0, .17);
+  --shadow-float: 0 24px 70px rgba(0, 0, 0, .38);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --font-caption: 11px;
+  --font-label: 12px;
+  --font-body: 13px;
+  --font-title-sm: 15px;
+  --font-title-md: 18px;
+  --font-title-lg: 28px;
+  --line-body: 1.6;
+  --control-height: 42px;
+  --control-height-compact: 40px;
+  --control-padding-inline: 12px;
+}
+
+:root { --sidebar-width: min(300px, 88vw); }

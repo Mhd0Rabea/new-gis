@@ -1,0 +1,41 @@
+# Local secrets and connections
+.env
+.env.example
+.env.*
+*.sde
+
+# Node/NestJS outputs (future phase)
+node_modules/
+dist/
+coverage/
+.runtime/
+.agents/
+.specify/
+# ArcGIS transient files; keep MGOS.aprx and MGOS.gdb when created
+*.lock
+Index/
+ImportLog/
+
+# Python importer outputs
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# GeoServer runtime and local credentials
+.runtime/
+geoserver/runtime/
+geoserver/data_dir/
+geoserver/*.exe
+geoserver/*.zip
+
+GpMessages/
+temp/
+.backup/
+*.log

@@ -1,0 +1,92 @@
+﻿openapi: 3.0.3
+info:
+  title: MGOS AI Point Classification
+  version: 0.1.0
+paths:
+  /api/processing/ai/models:
+    get:
+      summary: قائمة إصدارات نماذج التصنيف المتاحة
+      responses:
+        '200': { description: Model versions }
+  /api/processing/ai/classifications:
+    post:
+      summary: إنشاء مهمة تصنيف ذكي مؤقتة
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [inputFile, modelVersionId, confidenceThreshold]
+              properties:
+                inputFile: { type: string, pattern: '^[^/\\]+\\.(las|laz)$' }
+                modelVersionId: { type: string }
+                confidenceThreshold: { type: number, minimum: 0.5, maximum: 0.95, default: 0.7 }
+      responses:
+        '202': { description: Classification job accepted }
+        '400': { description: Invalid or out-of-scope input }
+  /api/processing/ai/classifications/{id}:
+    get:
+      summary: تفاصيل النتيجة والتتبع والمقاييس
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '200': { description: Classification result }
+        '404': { description: Result not found }
+  /api/processing/ai/classifications/{id}/artifact:
+    get:
+      summary: تنزيل GeoJSON المؤقت المصنف
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '200':
+          description: Classified GeoJSON in EPSG:4326
+          content:
+            application/geo+json: {}
+  /api/processing/ai/classifications/{id}/evaluation:
+    get:
+      summary: مقارنة النموذج وخط الأساس
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '200': { description: Confusion matrices and metrics }
+  /api/processing/ai/classifications/{id}/reviews:
+    post:
+      summary: تسجيل قرار مراجعة بشري غير قابل للاستبدال
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [decision]
+              properties:
+                featureId: { type: string, nullable: true }
+                decision: { type: string, enum: [accept, correct, reject] }
+                reviewedClass: { type: string, enum: [ground, building, vegetation, vehicle, unknown], nullable: true }
+                reason: { type: string, maxLength: 500 }
+      responses:
+        '201': { description: Immutable review decision created }
+        '409': { description: Result is not reviewable }
+    get:
+      summary: سجل قرارات المراجعة
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '200': { description: Review history }
+components:
+  schemas:
+    ClassifiedFeatureProperties:
+      type: object
+      required: [sourcePointId, predictedClass, confidence, reviewStatus, modelVersion]
+      properties:
+        sourcePointId: { type: string }
+        predictedClass: { type: string, enum: [ground, building, vegetation, vehicle, unknown] }
+        confidence: { type: number, minimum: 0, maximum: 100 }
+        reviewStatus: { type: string, enum: [unreviewed, accepted, corrected, rejected] }
+        reviewedClass: { type: string, nullable: true }
+        modelVersion: { type: string }
+
+

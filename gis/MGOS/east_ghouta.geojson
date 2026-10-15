@@ -1,0 +1,51 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East Ghouta Polygon",
+        "description": "Approximate polygon boundary of East Ghouta, Syria"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              36.3458,
+              33.5222
+            ],
+            [
+              36.36,
+              33.56
+            ],
+            [
+              36.4027,
+              33.5708
+            ],
+            [
+              36.48,
+              33.55
+            ],
+            [
+              36.5222,
+              33.5277
+            ],
+            [
+              36.475,
+              33.4847
+            ],
+            [
+              36.4,
+              33.48
+            ],
+            [
+              36.3458,
+              33.5222
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

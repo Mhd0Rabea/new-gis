@@ -1,0 +1,16 @@
+﻿{
+    "generatedAt":  "2026-10-12T15:18:36.9567218Z",
+    "status":  "PASS",
+    "datastoreUser":  "mgos_geoserver",
+    "wfs":  {
+                "status":  200,
+                "returned":  1,
+                "totalFeatures":  12
+            },
+    "wms":  {
+                "status":  200,
+                "contentType":  "image/png",
+                "bytes":  3180
+            },
+    "leastPrivilege":  "PASS"
+}

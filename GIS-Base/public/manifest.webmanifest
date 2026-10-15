@@ -1,0 +1,15 @@
+{
+  "name": "منصة الرصد المكاني",
+  "short_name": "الرصد المكاني",
+  "description": "منصة GIS داخلية لإدارة الأصول والوعي المكاني",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050b0d",
+  "theme_color": "#050b0d",
+  "icons": [
+    { "src": "/pwa-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
